@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import {
@@ -178,12 +178,14 @@ import { MetaService, Meta } from '../../services/meta.service';
   `]
 })
 export class CadastroMetasPage implements OnInit {
+  private metaService = inject(MetaService);
+
   metas: Meta[] = [];
   form: any = { descricao: '', prazo: '', status: '', observacoes: '' };
   errors: any = {};
   editingId: number | null = null;
 
-  constructor(private metaService: MetaService) {
+  constructor() {
     addIcons({ ribbonOutline, saveOutline, createOutline, trashOutline, addOutline, calendarOutline, checkmarkCircleOutline, hourglassOutline, flagOutline });
   }
 

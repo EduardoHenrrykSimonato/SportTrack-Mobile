@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Router, RouterLink } from '@angular/router';
@@ -254,6 +254,9 @@ import { AuthService } from '../../services/auth.service';
   `]
 })
 export class CadastroPage {
+  private authService = inject(AuthService);
+  private router = inject(Router);
+
   nome = '';
   email = '';
   senha = '';
@@ -262,10 +265,7 @@ export class CadastroPage {
   successMsg = '';
   errors: any = {};
 
-  constructor(
-    private authService: AuthService,
-    private router: Router
-  ) {
+  constructor() {
     addIcons({ personAddOutline, mailOutline, lockClosedOutline, personOutline, arrowBackOutline });
   }
 

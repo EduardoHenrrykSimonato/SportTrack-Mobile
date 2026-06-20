@@ -26,7 +26,7 @@ Permite que o usuário cadastre sua conta, registre seus dados como atleta, cada
 | **Angular** | 20.x | Framework frontend |
 | **Ionic** | 8.x | Framework mobile UI |
 | **TypeScript** | 5.x | Linguagem de programação |
-| **Capacitor** | 7.x | Runtime nativo (iOS/Android) |
+| **Capacitor** | 8.x | Runtime nativo (iOS/Android) |
 | **localStorage** | Nativo | Banco de dados local (abstração SQLite) |
 
 ---
@@ -35,8 +35,8 @@ Permite que o usuário cadastre sua conta, registre seus dados como atleta, cada
 
 ### Pré-requisitos
 
-- **Node.js** v18+ (recomendado v22 LTS)
-- **npm** v9+
+- **Node.js** v20.19+ ou v22.12+
+- **npm** v10+
 
 ### Passos
 
@@ -65,14 +65,15 @@ ionic serve
 npm start
 ```
 
-O aplicativo será aberto automaticamente no navegador em `http://localhost:8100`.
+Com `ionic serve`, o aplicativo abre em `http://localhost:8100`.
+Com `npm start`, o Angular serve o app em `http://localhost:4200`.
 
 > 💡 **Dica:** Use as DevTools do navegador (F12) e ative o modo responsivo para simular um celular (ex: 375 x 812px — iPhone).
 
 ### Build de produção
 
 ```bash
-ionic build --prod
+npm run build
 ```
 
 ### Deploy mobile (Android/iOS)

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import {
@@ -319,15 +319,15 @@ interface Atleta {
   `]
 })
 export class PerfilAtletaPage implements OnInit {
+  private authService = inject(AuthService);
+  private db = inject(DatabaseService);
+
   atleta: Atleta | null = null;
   editing = false;
   form: any = { nome: '', idade: '', peso: '', altura: '', modalidade: '', objetivo: '' };
   errors: any = {};
 
-  constructor(
-    private authService: AuthService,
-    private db: DatabaseService
-  ) {
+  constructor() {
     addIcons({ personOutline, saveOutline, createOutline, fitnessOutline });
   }
 

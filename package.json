@@ -1,8 +1,8 @@
 {
   "name": "sporttrack-mobile",
   "version": "0.0.1",
-  "author": "Ionic Framework",
-  "homepage": "https://ionicframework.com/",
+  "author": "Eduardo Henrryk Simonato",
+  "homepage": "https://github.com/EduardoHenrrykSimonato/SportTrack-Mobile",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
@@ -60,5 +60,5 @@
     "karma-jasmine-html-reporter": "~2.1.0",
     "typescript": "~5.9.0"
   },
-  "description": "An Ionic project"
+  "description": "Aplicativo mobile para controle de treinos esportivos"
 }

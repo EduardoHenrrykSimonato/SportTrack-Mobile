@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 import { DatabaseService, DBRecord } from './database.service';
 import { AuthService } from './auth.service';
 
@@ -16,12 +16,10 @@ export interface Atividade {
   providedIn: 'root'
 })
 export class AtividadeService {
-  private readonly TABLE = 'atividades';
+  private db = inject(DatabaseService);
+  private auth = inject(AuthService);
 
-  constructor(
-    private db: DatabaseService,
-    private auth: AuthService
-  ) {}
+  private readonly TABLE = 'atividades';
 
   private getUserId(): number {
     const user = this.auth.getCurrentUser();
@@ -48,10 +46,22 @@ export class AtividadeService {
   }
 
   update(id: number, atividade: Partial<Atividade>): boolean {
-    return this.db.update(this.TABLE, id, atividade) !== null;
+    if (!this.getById(id)) {
+      return false;
+    }
+
+    const { id: _id, usuario_id: _usuarioId, ...changes } = atividade;
+    return this.db.update(this.TABLE, id, {
+      ...changes,
+      usuario_id: this.getUserId()
+    }) !== null;
   }
 
   delete(id: number): boolean {
+    if (!this.getById(id)) {
+      return false;
+    }
+
     return this.db.delete(this.TABLE, id);
   }
 

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Router, RouterLink } from '@angular/router';
 import {
@@ -15,6 +15,7 @@ import { AuthService } from '../../services/auth.service';
 import { TreinoService } from '../../services/treino.service';
 import { AtividadeService } from '../../services/atividade.service';
 import { MetaService } from '../../services/meta.service';
+import { DatabaseService } from '../../services/database.service';
 
 @Component({
   selector: 'app-home',
@@ -308,19 +309,20 @@ import { MetaService } from '../../services/meta.service';
   `]
 })
 export class HomePage implements OnInit {
+  private authService = inject(AuthService);
+  private treinoService = inject(TreinoService);
+  private atividadeService = inject(AtividadeService);
+  private metaService = inject(MetaService);
+  private db = inject(DatabaseService);
+  private router = inject(Router);
+
   userName = '';
   treinosCount = 0;
   atividadesCount = 0;
   metasAtivasCount = 0;
   perfilStatus = '—';
 
-  constructor(
-    private authService: AuthService,
-    private treinoService: TreinoService,
-    private atividadeService: AtividadeService,
-    private metaService: MetaService,
-    private router: Router
-  ) {
+  constructor() {
     addIcons({
       logOutOutline, personOutline, barbellOutline, footballOutline,
       ribbonOutline, trophyOutline, fitnessOutline, flameOutline,
@@ -343,10 +345,8 @@ export class HomePage implements OnInit {
     this.atividadesCount = this.atividadeService.count();
     this.metasAtivasCount = this.metaService.countByStatus('Em andamento') + this.metaService.countByStatus('Pendente');
 
-    // Check if athlete profile exists
-    const db = (this.treinoService as any).db;
-    if (db && user) {
-      const atletas = db.getByField('atletas', 'usuario_id', user.id);
+    if (user) {
+      const atletas = this.db.getByField('atletas', 'usuario_id', user.id);
       this.perfilStatus = atletas.length > 0 ? '✓' : '—';
     }
   }

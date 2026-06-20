@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 import { DatabaseService, DBRecord } from './database.service';
 import { AuthService } from './auth.service';
 
@@ -17,12 +17,10 @@ export interface Treino {
   providedIn: 'root'
 })
 export class TreinoService {
-  private readonly TABLE = 'treinos';
+  private db = inject(DatabaseService);
+  private auth = inject(AuthService);
 
-  constructor(
-    private db: DatabaseService,
-    private auth: AuthService
-  ) {}
+  private readonly TABLE = 'treinos';
 
   private getUserId(): number {
     const user = this.auth.getCurrentUser();
@@ -49,10 +47,22 @@ export class TreinoService {
   }
 
   update(id: number, treino: Partial<Treino>): boolean {
-    return this.db.update(this.TABLE, id, treino) !== null;
+    if (!this.getById(id)) {
+      return false;
+    }
+
+    const { id: _id, usuario_id: _usuarioId, ...changes } = treino;
+    return this.db.update(this.TABLE, id, {
+      ...changes,
+      usuario_id: this.getUserId()
+    }) !== null;
   }
 
   delete(id: number): boolean {
+    if (!this.getById(id)) {
+      return false;
+    }
+
     return this.db.delete(this.TABLE, id);
   }
 

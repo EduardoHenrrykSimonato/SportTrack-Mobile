@@ -1,8 +1,8 @@
 import type { CapacitorConfig } from '@capacitor/cli';
 
 const config: CapacitorConfig = {
-  appId: 'io.ionic.starter',
-  appName: 'sporttrack-mobile',
+  appId: 'br.com.eduardohenrryk.sporttrack',
+  appName: 'SportTrack Mobile',
   webDir: 'www'
 };
 

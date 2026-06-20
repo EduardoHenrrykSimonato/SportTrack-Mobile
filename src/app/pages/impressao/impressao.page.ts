@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import {
   IonContent, IonHeader, IonToolbar, IonTitle, IonButton, IonIcon,
@@ -284,6 +284,12 @@ interface Atleta {
   `]
 })
 export class ImpressaoPage implements OnInit {
+  private authService = inject(AuthService);
+  private treinoService = inject(TreinoService);
+  private atividadeService = inject(AtividadeService);
+  private metaService = inject(MetaService);
+  private db = inject(DatabaseService);
+
   treinos: Treino[] = [];
   atividades: Atividade[] = [];
   metas: Meta[] = [];
@@ -291,13 +297,7 @@ export class ImpressaoPage implements OnInit {
   userName = '';
   printDate = '';
 
-  constructor(
-    private authService: AuthService,
-    private treinoService: TreinoService,
-    private atividadeService: AtividadeService,
-    private metaService: MetaService,
-    private db: DatabaseService
-  ) {
+  constructor() {
     addIcons({ printOutline, fitnessOutline });
   }
 

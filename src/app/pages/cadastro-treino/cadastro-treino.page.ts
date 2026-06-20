@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import {
@@ -181,12 +181,14 @@ import { TreinoService, Treino } from '../../services/treino.service';
   `]
 })
 export class CadastroTreinoPage implements OnInit {
+  private treinoService = inject(TreinoService);
+
   treinos: Treino[] = [];
   form: any = { titulo: '', modalidade: '', data: '', duracao: '', intensidade: '', observacoes: '' };
   errors: any = {};
   editingId: number | null = null;
 
-  constructor(private treinoService: TreinoService) {
+  constructor() {
     addIcons({ barbellOutline, saveOutline, createOutline, trashOutline, addOutline, calendarOutline, timeOutline, flashOutline, closeCircleOutline });
   }
 

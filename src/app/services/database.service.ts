@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 
 export interface DBRecord {
   id: number;
-  [key: string]: any;
+  [key: string]: unknown;
 }
 
 @Injectable({
@@ -44,7 +44,7 @@ export class DatabaseService {
     return next;
   }
 
-  insert(tableName: string, record: any): DBRecord {
+  insert(tableName: string, record: Omit<DBRecord, 'id'>): DBRecord {
     const table = this.getTable(tableName);
     const id = this.getNextId(tableName);
     const newRecord = { ...record, id };
@@ -62,12 +62,12 @@ export class DatabaseService {
     return table.find(r => r.id === id);
   }
 
-  getByField(tableName: string, field: string, value: any): DBRecord[] {
+  getByField(tableName: string, field: string, value: unknown): DBRecord[] {
     const table = this.getTable(tableName);
     return table.filter(r => r[field] === value);
   }
 
-  update(tableName: string, id: number, record: any): DBRecord | null {
+  update(tableName: string, id: number, record: Partial<DBRecord>): DBRecord | null {
     const table = this.getTable(tableName);
     const index = table.findIndex(r => r.id === id);
     if (index === -1) return null;
@@ -85,7 +85,7 @@ export class DatabaseService {
     return true;
   }
 
-  count(tableName: string, field?: string, value?: any): number {
+  count(tableName: string, field?: string, value?: unknown): number {
     if (field && value !== undefined) {
       return this.getByField(tableName, field, value).length;
     }

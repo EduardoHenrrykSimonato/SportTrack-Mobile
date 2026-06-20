@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Router, RouterLink } from '@angular/router';
@@ -224,18 +224,18 @@ import { DatabaseService } from '../../services/database.service';
   `]
 })
 export class RelatoriosPage implements OnInit {
+  private treinoService = inject(TreinoService);
+  private atividadeService = inject(AtividadeService);
+  private metaService = inject(MetaService);
+  private authService = inject(AuthService);
+  private router = inject(Router);
+
   segment = 'todos';
   treinos: Treino[] = [];
   atividades: Atividade[] = [];
   metas: Meta[] = [];
 
-  constructor(
-    private treinoService: TreinoService,
-    private atividadeService: AtividadeService,
-    private metaService: MetaService,
-    private authService: AuthService,
-    private router: Router
-  ) {
+  constructor() {
     addIcons({
       listOutline, barbellOutline, footballOutline, ribbonOutline,
       printOutline, personOutline, calendarOutline, timeOutline,

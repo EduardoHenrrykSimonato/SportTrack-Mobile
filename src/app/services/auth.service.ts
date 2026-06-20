@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 import { DatabaseService } from './database.service';
 
 export interface Usuario {
@@ -12,10 +12,10 @@ export interface Usuario {
   providedIn: 'root'
 })
 export class AuthService {
+  private db = inject(DatabaseService);
+
   private readonly TABLE = 'usuarios';
   private readonly SESSION_KEY = 'sporttrack_session';
-
-  constructor(private db: DatabaseService) {}
 
   register(nome: string, email: string, senha: string): { success: boolean; message: string } {
     // Check if email already exists
@@ -24,7 +24,7 @@ export class AuthService {
       return { success: false, message: 'Este e-mail já está cadastrado.' };
     }
 
-    const user = this.db.insert(this.TABLE, {
+    this.db.insert(this.TABLE, {
       nome: nome.trim(),
       email: email.toLowerCase().trim(),
       senha: senha

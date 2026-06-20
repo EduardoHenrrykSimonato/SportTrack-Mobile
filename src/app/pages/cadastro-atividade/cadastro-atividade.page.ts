@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import {
@@ -172,12 +172,14 @@ import { AtividadeService, Atividade } from '../../services/atividade.service';
   `]
 })
 export class CadastroAtividadePage implements OnInit {
+  private atividadeService = inject(AtividadeService);
+
   atividades: Atividade[] = [];
   form: any = { tipo: '', distancia: '', tempo: '', calorias: '', data: '' };
   errors: any = {};
   editingId: number | null = null;
 
-  constructor(private atividadeService: AtividadeService) {
+  constructor() {
     addIcons({ footballOutline, saveOutline, createOutline, trashOutline, addOutline, calendarOutline, flameOutline, speedometerOutline, timerOutline, bodyOutline });
   }
 
