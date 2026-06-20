@@ -1,0 +1,448 @@
+/*
+ * SportTrack Mobile — Global Styles
+ */
+
+/* Core CSS required for Ionic components to work properly */
+@import "@ionic/angular/css/core.css";
+
+/* Basic CSS for apps built with Ionic */
+@import "@ionic/angular/css/normalize.css";
+@import "@ionic/angular/css/structure.css";
+@import "@ionic/angular/css/typography.css";
+@import "@ionic/angular/css/display.css";
+
+/* Optional CSS utils */
+@import "@ionic/angular/css/padding.css";
+@import "@ionic/angular/css/float-elements.css";
+@import "@ionic/angular/css/text-alignment.css";
+@import "@ionic/angular/css/text-transformation.css";
+@import "@ionic/angular/css/flex-utils.css";
+
+/* ============================================================
+   GLOBAL STYLES — SportTrack Mobile
+   ============================================================ */
+
+* {
+  font-family: var(--st-font);
+}
+
+/* ---- Scrollbar ---- */
+::-webkit-scrollbar {
+  width: 4px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: var(--ion-color-primary);
+  border-radius: 4px;
+}
+
+/* ---- Accessibility: Focus visible ---- */
+*:focus-visible {
+  outline: 2px solid var(--ion-color-primary) !important;
+  outline-offset: 2px;
+}
+
+/* ---- Cards Glassmorphism ---- */
+.st-card {
+  background: var(--st-glass-bg);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid var(--st-glass-border);
+  border-radius: var(--st-radius);
+  box-shadow: var(--st-shadow);
+  padding: 20px;
+  margin-bottom: 16px;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.st-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4);
+}
+
+/* ---- Form Styles ---- */
+.st-form-group {
+  margin-bottom: 16px;
+}
+
+.st-form-group ion-label {
+  font-weight: 600;
+  font-size: 14px;
+  color: var(--ion-color-light);
+  margin-bottom: 6px;
+  display: block;
+}
+
+ion-input, ion-textarea, ion-select {
+  --background: rgba(27, 42, 74, 0.5);
+  --border-radius: 12px;
+  --padding-start: 16px;
+  --padding-end: 16px;
+  --color: var(--ion-color-light);
+  --placeholder-color: var(--ion-color-medium);
+  font-family: var(--st-font);
+}
+
+ion-item {
+  --background: transparent;
+  --border-color: rgba(255, 107, 53, 0.15);
+  --padding-start: 0;
+  --inner-padding-end: 0;
+  --min-height: 56px;
+  font-family: var(--st-font);
+}
+
+ion-item.item-has-focus {
+  --border-color: var(--ion-color-primary);
+}
+
+/* ---- Buttons ---- */
+.st-btn-primary {
+  --background: var(--st-gradient-primary);
+  --border-radius: 14px;
+  --box-shadow: 0 4px 16px rgba(255, 107, 53, 0.4);
+  font-weight: 700;
+  font-size: 16px;
+  height: 52px;
+  text-transform: none;
+  letter-spacing: 0.3px;
+  transition: all 0.3s ease;
+  font-family: var(--st-font);
+}
+
+.st-btn-primary:hover {
+  --box-shadow: 0 6px 24px rgba(255, 107, 53, 0.6);
+  transform: translateY(-1px);
+}
+
+.st-btn-outline {
+  --background: transparent;
+  --border-color: var(--ion-color-primary);
+  --border-width: 2px;
+  --border-style: solid;
+  --border-radius: 14px;
+  --color: var(--ion-color-primary);
+  font-weight: 600;
+  font-size: 16px;
+  height: 52px;
+  text-transform: none;
+  font-family: var(--st-font);
+}
+
+.st-btn-danger {
+  --background: var(--ion-color-danger);
+  --border-radius: 14px;
+  font-weight: 600;
+  height: 48px;
+  text-transform: none;
+  font-family: var(--st-font);
+}
+
+/* ---- Section Title ---- */
+.st-section-title {
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--ion-color-light);
+  margin: 24px 0 16px 0;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.st-section-title ion-icon {
+  color: var(--ion-color-primary);
+  font-size: 22px;
+}
+
+/* ---- Empty State ---- */
+.st-empty-state {
+  text-align: center;
+  padding: 48px 24px;
+  color: var(--ion-color-medium);
+
+  ion-icon {
+    font-size: 64px;
+    margin-bottom: 16px;
+    color: var(--ion-color-primary);
+    opacity: 0.5;
+  }
+
+  h3 {
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 8px;
+    color: var(--ion-color-light);
+  }
+
+  p {
+    font-size: 14px;
+  }
+}
+
+/* ---- Animations ---- */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes pulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+}
+
+.animate-fade-in-up {
+  animation: fadeInUp 0.5s ease forwards;
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.4s ease forwards;
+}
+
+.animate-slide-in-left {
+  animation: slideInLeft 0.4s ease forwards;
+}
+
+/* Stagger delays */
+.delay-1 { animation-delay: 0.1s; opacity: 0; }
+.delay-2 { animation-delay: 0.2s; opacity: 0; }
+.delay-3 { animation-delay: 0.3s; opacity: 0; }
+.delay-4 { animation-delay: 0.4s; opacity: 0; }
+.delay-5 { animation-delay: 0.5s; opacity: 0; }
+
+/* ---- Validation Error ---- */
+.st-error-msg {
+  color: var(--ion-color-danger);
+  font-size: 12px;
+  margin-top: 4px;
+  padding-left: 4px;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-weight: 500;
+}
+
+/* ---- Badge ---- */
+.st-badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.st-badge--success {
+  background: rgba(0, 200, 83, 0.15);
+  color: #00C853;
+}
+
+.st-badge--warning {
+  background: rgba(255, 214, 0, 0.15);
+  color: #FFD600;
+}
+
+.st-badge--danger {
+  background: rgba(255, 75, 92, 0.15);
+  color: #FF4B5C;
+}
+
+.st-badge--primary {
+  background: rgba(255, 107, 53, 0.15);
+  color: #FF6B35;
+}
+
+/* ---- List Item Card ---- */
+.st-list-card {
+  background: var(--st-glass-bg);
+  backdrop-filter: blur(16px);
+  border: 1px solid var(--st-glass-border);
+  border-radius: 14px;
+  padding: 16px;
+  margin-bottom: 12px;
+  transition: all 0.2s ease;
+}
+
+.st-list-card__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 8px;
+}
+
+.st-list-card__title {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--ion-color-light);
+  margin: 0;
+}
+
+.st-list-card__subtitle {
+  font-size: 13px;
+  color: var(--ion-color-medium);
+  margin: 4px 0 0 0;
+}
+
+.st-list-card__body {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 10px;
+}
+
+.st-list-card__info {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 13px;
+  color: var(--ion-color-medium);
+
+  ion-icon {
+    color: var(--ion-color-primary);
+    font-size: 16px;
+  }
+
+  span {
+    color: var(--ion-color-light);
+    font-weight: 500;
+  }
+}
+
+.st-list-card__actions {
+  display: flex;
+  gap: 8px;
+  margin-top: 12px;
+  padding-top: 12px;
+  border-top: 1px solid rgba(255, 107, 53, 0.1);
+}
+
+/* ---- Tabs ---- */
+ion-tab-bar {
+  --background: rgba(13, 27, 42, 0.95);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-top: 1px solid rgba(255, 107, 53, 0.15);
+  padding-bottom: env(safe-area-inset-bottom);
+  height: 60px;
+}
+
+ion-tab-button {
+  --color: var(--ion-color-medium);
+  --color-selected: var(--ion-color-primary);
+  font-family: var(--st-font);
+  font-size: 11px;
+  font-weight: 500;
+  transition: all 0.2s ease;
+
+  ion-icon {
+    font-size: 24px;
+    margin-bottom: 2px;
+  }
+}
+
+ion-tab-button.tab-selected {
+  ion-icon {
+    filter: drop-shadow(0 0 8px rgba(255, 107, 53, 0.5));
+  }
+}
+
+/* ---- Print styles ---- */
+@media print {
+  ion-tab-bar,
+  ion-toolbar,
+  ion-header,
+  ion-footer,
+  .no-print,
+  ion-fab,
+  ion-back-button {
+    display: none !important;
+  }
+
+  body {
+    --ion-background-color: #ffffff !important;
+    --ion-text-color: #000000 !important;
+    background: #ffffff !important;
+    color: #000000 !important;
+  }
+
+  ion-content {
+    --background: #ffffff !important;
+    color: #000000 !important;
+  }
+
+  .st-card, .st-list-card {
+    background: #ffffff !important;
+    border: 1px solid #ddd !important;
+    box-shadow: none !important;
+    backdrop-filter: none !important;
+    color: #000 !important;
+    break-inside: avoid;
+  }
+
+  .print-section {
+    break-inside: avoid;
+    margin-bottom: 20px;
+  }
+
+  .print-title {
+    color: #000 !important;
+    font-size: 24px !important;
+    border-bottom: 2px solid #FF6B35;
+    padding-bottom: 8px;
+    margin-bottom: 16px;
+  }
+
+  .print-subtitle {
+    color: #333 !important;
+    font-size: 18px !important;
+    margin: 16px 0 8px 0;
+  }
+
+  .print-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 16px;
+
+    th, td {
+      border: 1px solid #ddd;
+      padding: 8px 12px;
+      text-align: left;
+      font-size: 12px;
+      color: #000 !important;
+    }
+
+    th {
+      background: #f5f5f5;
+      font-weight: 700;
+    }
+
+    tr:nth-child(even) {
+      background: #fafafa;
+    }
+  }
+}

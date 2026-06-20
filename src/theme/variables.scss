@@ -1,0 +1,118 @@
+// SportTrack Mobile — Theme Variables
+// Sporty dark theme with vibrant orange, deep blue, and green accents
+
+:root {
+  // Primary - Vibrant Orange
+  --ion-color-primary: #FF6B35;
+  --ion-color-primary-rgb: 255, 107, 53;
+  --ion-color-primary-contrast: #ffffff;
+  --ion-color-primary-contrast-rgb: 255, 255, 255;
+  --ion-color-primary-shade: #e05e2f;
+  --ion-color-primary-tint: #ff7a49;
+
+  // Secondary - Deep Blue
+  --ion-color-secondary: #1B2A4A;
+  --ion-color-secondary-rgb: 27, 42, 74;
+  --ion-color-secondary-contrast: #ffffff;
+  --ion-color-secondary-contrast-rgb: 255, 255, 255;
+  --ion-color-secondary-shade: #182541;
+  --ion-color-secondary-tint: #323f5c;
+
+  // Tertiary - Electric Green
+  --ion-color-tertiary: #00C853;
+  --ion-color-tertiary-rgb: 0, 200, 83;
+  --ion-color-tertiary-contrast: #ffffff;
+  --ion-color-tertiary-contrast-rgb: 255, 255, 255;
+  --ion-color-tertiary-shade: #00b049;
+  --ion-color-tertiary-tint: #1ace64;
+
+  // Success
+  --ion-color-success: #00C853;
+  --ion-color-success-rgb: 0, 200, 83;
+  --ion-color-success-contrast: #ffffff;
+  --ion-color-success-contrast-rgb: 255, 255, 255;
+  --ion-color-success-shade: #00b049;
+  --ion-color-success-tint: #1ace64;
+
+  // Warning - Amber
+  --ion-color-warning: #FFD600;
+  --ion-color-warning-rgb: 255, 214, 0;
+  --ion-color-warning-contrast: #000000;
+  --ion-color-warning-contrast-rgb: 0, 0, 0;
+  --ion-color-warning-shade: #e0bc00;
+  --ion-color-warning-tint: #ffda1a;
+
+  // Danger
+  --ion-color-danger: #FF4B5C;
+  --ion-color-danger-rgb: 255, 75, 92;
+  --ion-color-danger-contrast: #ffffff;
+  --ion-color-danger-contrast-rgb: 255, 255, 255;
+  --ion-color-danger-shade: #e04251;
+  --ion-color-danger-tint: #ff5d6c;
+
+  // Dark
+  --ion-color-dark: #0D1B2A;
+  --ion-color-dark-rgb: 13, 27, 42;
+  --ion-color-dark-contrast: #ffffff;
+  --ion-color-dark-contrast-rgb: 255, 255, 255;
+  --ion-color-dark-shade: #0b1825;
+  --ion-color-dark-tint: #25323f;
+
+  // Medium
+  --ion-color-medium: #5C6B7A;
+  --ion-color-medium-rgb: 92, 107, 122;
+  --ion-color-medium-contrast: #ffffff;
+  --ion-color-medium-contrast-rgb: 255, 255, 255;
+  --ion-color-medium-shade: #515e6b;
+  --ion-color-medium-tint: #6c7a87;
+
+  // Light
+  --ion-color-light: #E8ECF1;
+  --ion-color-light-rgb: 232, 236, 241;
+  --ion-color-light-contrast: #0D1B2A;
+  --ion-color-light-contrast-rgb: 13, 27, 42;
+  --ion-color-light-shade: #ccd0d4;
+  --ion-color-light-tint: #eaeef2;
+
+  // Custom app variables
+  --st-gradient-primary: linear-gradient(135deg, #FF6B35 0%, #FF8F65 100%);
+  --st-gradient-header: linear-gradient(135deg, #1B2A4A 0%, #2A3F6A 50%, #FF6B35 100%);
+  --st-gradient-card: linear-gradient(145deg, rgba(27, 42, 74, 0.8), rgba(13, 27, 42, 0.9));
+  --st-glass-bg: rgba(27, 42, 74, 0.6);
+  --st-glass-border: rgba(255, 107, 53, 0.2);
+  --st-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+  --st-radius: 16px;
+  --st-font: 'Outfit', sans-serif;
+}
+
+// Dark mode - Always on
+body {
+  --ion-background-color: #0D1B2A;
+  --ion-background-color-rgb: 13, 27, 42;
+
+  --ion-text-color: #E8ECF1;
+  --ion-text-color-rgb: 232, 236, 241;
+
+  --ion-card-background: #152238;
+
+  --ion-item-background: #152238;
+
+  --ion-toolbar-background: #0D1B2A;
+  --ion-toolbar-color: #E8ECF1;
+
+  --ion-tab-bar-background: #0D1B2A;
+  --ion-tab-bar-color: #5C6B7A;
+  --ion-tab-bar-color-selected: #FF6B35;
+
+  --ion-border-color: rgba(255, 107, 53, 0.15);
+
+  font-family: var(--st-font);
+}
+
+ion-content {
+  --background: #0D1B2A;
+}
+
+ion-toolbar {
+  --border-color: rgba(255, 107, 53, 0.15);
+}
